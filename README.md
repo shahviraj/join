@@ -1,6 +1,6 @@
-# Project Page for MultiStyleGAN
+# Project Page for JoIN
 
-This repository contains the source code for the project page for the project "MultiStyleGAN".
+This repository contains the source code for the project page for the project "JoIN".
 
 This webpage is adopted from the Nerfies webpage template. If you find it useful for your work please cite:
 ```
