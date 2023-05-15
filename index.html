@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="description"
-        content="MultiStyleGAN: a novel StyleGAN-based one-shot stylization methodology to obtain multiple image stylizations using a single GAN.">
-  <meta name="keywords" content="GAN, Style Transfer, Image Stylization, Face Stylization, StyleGAN, MultiStyleGAN">
+        content="JoIN: Joint Inversion of Multiple GANs for Intrinsic Image Decomposition">
+  <meta name="keywords" content="GAN, Intrinsic Image Decomposition, GAN Inversion, Albedo, Shading, Specular, StyleGAN">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>MultiStyleGAN: Multiple One-shot Image Stylizations using a Single GAN</title>
+  <title>JoIN: Joint GANs Inversion for Intrinsic Image Decomposition</title>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script> -->
@@ -90,24 +90,21 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">MultiStyleGAN: Multiple One-shot Image Stylizations using a Single GAN</h1>
+          <h1 class="title is-1 publication-title">JoIN: Joint GANs Inversion for Intrinsic Image Decomposition</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
-              <a href="https://virajshah.com">Viraj Shah</a>,</span>
+              <a href="https://virajshah.com">Viraj Shah</a><sup>1</sup>,</span>
             <span class="author-block">
-              <a href="https://www.linkedin.com/in/ayush-sarkar-033071126/">Ayush Sarkar</a>,
+              <a href="http://slazebni.cs.illinois.edu/">Svetlana Lazebnik</a><sup>1</sup>,
             </span>
             <span class="author-block">
-              <a href="https://www.linkedin.com/in/sudharsanka/">Sudharsan Krishnakumar Anita</a>,
-            </span>
-            <span class="author-block">
-              <a href="http://slazebni.cs.illinois.edu/">Svetlana Lazebnik</a>
+              <a href="https://julienphilip.com/">Julien Philip</a><sup>2</sup>
             </span>
           </div>
 
           <div class="is-size-5 publication-authors">
-            <span class="author-block">University of Illinois, Urbana-Champaign</span>
-<!--            <span class="author-block"><sup>2</sup>Google Research</span>-->
+            <span class="author-block"><sup>1</sup>University of Illinois, Urbana-Champaign</span>
+            <span class="author-block"><sup>2</sup>Adobe Research</span>
           </div>
 
           <div class="column has-text-centered">
@@ -123,7 +120,7 @@
 <!--                </a>-->
 <!--              </span>-->
               <span class="link-block">
-                <a href="https://arxiv.org/pdf/2210.04120.pdf"
+                <a href=""
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="ai ai-arxiv"></i>
@@ -132,23 +129,23 @@
                 </a>
               </span>
               <!-- Video Link. -->
-              <span class="link-block">
-                <a href=""
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-youtube"></i>
-                  </span>
-                  <span>Video</span>
-                </a>
-              </span>
+<!--              <span class="link-block">-->
+<!--                <a href=""-->
+<!--                   class="external-link button is-normal is-rounded is-dark">-->
+<!--                  <span class="icon">-->
+<!--                      <i class="fab fa-youtube"></i>-->
+<!--                  </span>-->
+<!--                  <span>Video</span>-->
+<!--                </a>-->
+<!--              </span>-->
               <!-- Code Link. -->
               <span class="link-block">
-                <a href="https://github.com/shahviraj/multistyle"
-                   class="external-link button is-normal is-rounded is-dark">
+                <a href=""
+                   class="external-link button is-normal is-rounded">
                   <span class="icon">
                       <i class="fab fa-github"></i>
                   </span>
-                  <span>Code</span>
+                  <span>Code (Coming Soon!)</span>
                   </a>
               </span>
               <!-- Dataset Link. -->
@@ -249,7 +246,11 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Image stylization aims at applying a reference style to arbitrary input images. A common scenario is one-shot stylization, where only one example is available for each reference style. Recent approaches for one-shot stylization such as JoJoGAN fine-tune a pre-trained StyleGAN2 generator on a single style reference image. However, such methods cannot generate multiple stylizations without fine-tuning a new model for each style separately. In this work, we present a MultiStyleGAN method that is capable of producing multiple different stylizations at once by fine-tuning a single generator. The key component of our method is a learnable transformation module called Style Transformation Network. It takes latent codes as input, and learns linear mappings to different regions of the latent space to produce distinct codes for each style, resulting in a multistyle space. Our model inherently mitigates overfitting since it is trained on multiple styles, hence improving the quality of stylizations. Our method can learn upwards of 120 image stylizations at once, bringing 8× to 60× improvement in training time over recent competing methods. We support our results through user studies and quantitative results that indicate meaningful improvements over existing methods.
+            In this work, we propose to solve ill-posed inverse imaging problems using a bank of Generative Adversarial Networks (GAN) as a prior and apply our method to the case of Intrinsic Image Decomposition for faces and materials.
+Our method builds on the demonstrated success of GANs to capture complex image distributions.
+At the core of our approach is the idea that the latent space of a GAN is a well-suited optimization domain to solve inverse problems.
+Given an input image, we propose to jointly inverse the latent codes of a set of GANs and combine their outputs to reproduce the input.
+Contrary to most GAN inversion methods which are limited to inverting only a single GAN, we demonstrate that it is possible to maintain distribution priors while inverting several GANs jointly. We show that our approach is modular, allowing various forward imaging models, that it can successfully decompose both synthetic and real images, and provides additional advantages such as leveraging properties of GAN latent space for image relighting.
            </p>
         </div>
       </div>
@@ -257,15 +258,15 @@
     <!--/ Abstract. -->
 
     <!-- Paper video. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Video</h2>
-        <div class="publication-video">
-          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
-                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-        </div>
-      </div>
-    </div>
+<!--    <div class="columns is-centered has-text-centered">-->
+<!--      <div class="column is-four-fifths">-->
+<!--        <h2 class="title is-3">Video</h2>-->
+<!--        <div class="publication-video">-->
+<!--          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"-->
+<!--                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
     <!--/ Paper video. -->
   </div>
 </section>
@@ -411,9 +412,9 @@
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
-    <pre><code>@article{multistylegan23,
-  author    = {Shah, Viraj and Sarkar, Ayush and Anita, Sudharsan Krishnakumar and Lazebnik, Svetlana},
-  title     = {MultiStyleGAN: Multiple One-shot Image Stylizations using a Single GAN},
+    <pre><code>@article{join23,
+  author    = {Shah, Viraj and Lazebnik, Svetlana and Philip, Julien},
+  title     = {JoIN: Joint GANs Inversion for Intrinsic Image Decomposition},
   journal   = {arXiv},
   year      = {2023},
 }</code></pre>
@@ -425,10 +426,10 @@
   <div class="container">
     <div class="content has-text-centered">
       <a class="icon-link"
-         href="./static/videos/nerfies_paper.pdf">
+         href="">
         <i class="fas fa-file-pdf"></i>
       </a>
-      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+      <a class="icon-link" href="https://github.com/shahviraj" class="external-link" disabled>
         <i class="fab fa-github"></i>
       </a>
     </div>
